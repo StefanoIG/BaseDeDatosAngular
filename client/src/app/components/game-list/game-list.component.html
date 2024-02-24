@@ -1,0 +1,24 @@
+<style>
+    .custom-img {
+        width: 100%; /* Ancho del 100% del contenedor */
+        height: 200px; /* Altura fija deseada */
+        object-fit: cover; /* Ajusta la imagen dentro del contenedor manteniendo su relación de aspecto */
+    }
+</style>
+
+<div class="col-md-4" *ngFor="let game of games">
+    <div class="card text-center">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            {{game.title}}
+            <button class="btn btn-danger" (click)="deleteGame(game.id)">
+                <i class="far fa-trash-alt"></i>
+            </button>
+        </div>
+        <img [src]="game.image" class="card-img-top custom-img "> <!-- Aplicamos la clase personalizada 'custom-img' -->
+        <div class="card-body">
+            <p>{{game.description}}</p>
+            <a [routerLink]="['/games/edit', game.id]" class="btn btn-info btn-block">Edit game</a>
+        </div>
+    </div>
+</div>
+
